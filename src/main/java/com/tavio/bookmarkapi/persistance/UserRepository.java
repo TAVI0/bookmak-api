@@ -2,10 +2,12 @@ package com.tavio.bookmarkapi.persistance;
 
 import com.tavio.bookmarkapi.persistance.crud.UserCrudRepository;
 import com.tavio.bookmarkapi.persistance.entity.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class UserRepository {
     private UserCrudRepository userCrudRepository;
 
