@@ -17,13 +17,18 @@ public class User {
     private String description;
     private String twitter;
 
+   /*
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
-    @OneToMany(mappedBy = "user")
-    private List<UserLike> likes;
+
+
 
     @OneToMany(mappedBy = "user")
+    private List<UserLike> likes;
+*/
+    @OneToMany(mappedBy = "user")
     private List<UserFollow> follows;
+
     @OneToMany(mappedBy = "idFollowedUser")
     private List<UserFollow> followers;
 

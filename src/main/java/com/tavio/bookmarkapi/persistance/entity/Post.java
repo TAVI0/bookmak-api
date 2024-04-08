@@ -22,6 +22,7 @@ public class Post {
     private boolean liked;
     private boolean readBefore;
 
+
     @ManyToOne
     @JoinColumn(name = "idUser", insertable = false, updatable = false)
     private User user;
@@ -30,8 +31,8 @@ public class Post {
     @JoinColumn(name = "idBook", insertable = false, updatable = false)
     private Book book;
 
-    @OneToMany(mappedBy = "post")
+  /*  @OneToMany(mappedBy = "post")
     private List<UserLike> usersLike;
-
+   */
 
 }

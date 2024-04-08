@@ -23,7 +23,7 @@ public class BookController {
         bookService.save(book);
     }
 
-    @DeleteMapping("/delete/id")
+    @DeleteMapping("/delete/{id}")
     public boolean delete(@PathVariable("id") int idBook){
         return bookService.delete(idBook);
     }

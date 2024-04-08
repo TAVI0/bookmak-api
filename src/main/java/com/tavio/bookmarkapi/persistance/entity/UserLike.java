@@ -9,7 +9,7 @@ import lombok.Data;
 public class UserLike {
     @EmbeddedId
     private UserLikePK id;
-
+/*
     @ManyToOne
     @JoinColumn(name = "idUser", insertable = false, updatable = false)
     private User user;
@@ -17,4 +17,5 @@ public class UserLike {
     @ManyToOne
     @JoinColumn(name = "idPost", insertable = false, updatable = false)
     private Post post;
+ */
 }

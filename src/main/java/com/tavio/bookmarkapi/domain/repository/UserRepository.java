@@ -1,4 +1,4 @@
-package com.tavio.bookmarkapi.persistance;
+package com.tavio.bookmarkapi.domain.repository;
 
 import com.tavio.bookmarkapi.persistance.crud.UserCrudRepository;
 import com.tavio.bookmarkapi.persistance.entity.User;

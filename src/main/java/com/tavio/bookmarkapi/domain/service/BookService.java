@@ -1,6 +1,6 @@
 package com.tavio.bookmarkapi.domain.service;
 
-import com.tavio.bookmarkapi.persistance.BookRepository;
+import com.tavio.bookmarkapi.domain.repository.BookRepository;
 import com.tavio.bookmarkapi.persistance.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

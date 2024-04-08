@@ -1,4 +1,4 @@
-package com.tavio.bookmarkapi.persistance;
+package com.tavio.bookmarkapi.domain.repository;
 
 import com.tavio.bookmarkapi.persistance.crud.BookCrudRepository;
 import com.tavio.bookmarkapi.persistance.entity.Book;
@@ -16,8 +16,8 @@ public class BookRepository {
     public List<Book> getAll(){
         return (List<Book>) bookCrudRepository.findAll();
     }
-    public Book save(Book book){
-        return bookCrudRepository.save(book);
+    public void save(Book book){
+        bookCrudRepository.save(book);
     }
     public void delete(int idBook){
         bookCrudRepository.deleteById(idBook);
