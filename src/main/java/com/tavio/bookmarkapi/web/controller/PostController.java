@@ -1,7 +1,9 @@
 package com.tavio.bookmarkapi.web.controller;
 
 import com.tavio.bookmarkapi.domain.service.PostService;
+import com.tavio.bookmarkapi.domain.service.UserService;
 import com.tavio.bookmarkapi.persistance.entity.Post;
+import com.tavio.bookmarkapi.persistance.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,8 @@ import java.util.Optional;
 public class PostController {
     @Autowired
     private PostService postService;
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/all")
     public List<Post> getAll(){
@@ -23,9 +27,15 @@ public class PostController {
     public Optional<Post> getPost(@PathVariable("id") BigInteger idPost){
         return postService.getPost(idPost);
     }
-    @GetMapping("/user/{id}")
-    public List<Post> getByUser(@PathVariable("id") int idUser){
+    @GetMapping("/userid/{id}")
+    public List<Post> getByUserid(@PathVariable("id") int idUser){
         return postService.getByUser(idUser);
+    }
+
+    @GetMapping("/username/{username}")
+    public List<Post> getByUsername(@PathVariable("username") String username){
+        Optional<User> user = userService.getByUsername(username);
+        return user.map(value -> postService.getByUser(value.getId())).orElse(null);
     }
 
     @PostMapping("/save")

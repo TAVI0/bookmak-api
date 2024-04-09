@@ -22,6 +22,7 @@ public class PostService {
         return  postRepository.getByUser(idUser);
     }
 
+
     public Optional<Post> getPost(BigInteger idPost){
         return postRepository.getPost(idPost);
     }
