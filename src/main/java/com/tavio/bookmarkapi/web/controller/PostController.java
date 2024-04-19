@@ -1,5 +1,6 @@
 package com.tavio.bookmarkapi.web.controller;
 
+import com.tavio.bookmarkapi.domain.service.BookService;
 import com.tavio.bookmarkapi.domain.service.PostService;
 import com.tavio.bookmarkapi.domain.service.UserService;
 import com.tavio.bookmarkapi.persistance.entity.Post;
@@ -18,6 +19,8 @@ public class PostController {
     private PostService postService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private BookService bookService;
 
     @GetMapping("/all")
     public List<Post> getAll(){
@@ -40,6 +43,8 @@ public class PostController {
 
     @PostMapping("/save")
     public void save(@RequestBody Post post){
+        post.setBook(bookService.getBook(post.getIdBook()).get());
+        post.setUser(userService.getById(post.getIdUser()).get());
         postService.save(post);
     }
     @DeleteMapping("/delete/{id}")

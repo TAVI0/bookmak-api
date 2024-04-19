@@ -16,7 +16,6 @@ import java.util.Optional;
 public class UserController {
     @Autowired
     private UserService userService;
-    
     @GetMapping("/all")
     public List<User> getAll(){
         return userService.getAll();

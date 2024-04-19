@@ -5,7 +5,6 @@ import lombok.Data;
 
 import java.math.BigInteger;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @Entity
@@ -15,7 +14,12 @@ public class Post {
     private BigInteger id;
     private Integer idUser;
     private Integer idBook;
-    private Date date;
+    @Column(name="date_post")
+    private Date datePost;
+    @Column(name="date_start")
+    private Date dateStart;
+    @Column(name="date_end")
+    private Date dateEnd;
     private String review;
     private Integer rated;
     private boolean spoiler;
