@@ -1,12 +1,10 @@
 package com.tavio.bookmarkapi.web.controller;
 
 import com.tavio.bookmarkapi.domain.service.UserService;
+import com.tavio.bookmarkapi.persistance.entity.Post;
 import com.tavio.bookmarkapi.persistance.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,5 +25,9 @@ public class UserController {
     @GetMapping("/username/{username}")
     public Optional<User> getByUsername(@PathVariable("username") String username){
         return userService.getByUsername(username);
+    }
+    @PostMapping("/save")
+    public void save(@RequestBody User user){
+        userService.save(user);
     }
 }

@@ -22,4 +22,7 @@ public class UserRepository {
     public Optional<User> getByUsername(String username){
         return userCrudRepository.findByUsername(username);
     }
+    public User save(User user){
+        return userCrudRepository.save(user);
+    }
 }
