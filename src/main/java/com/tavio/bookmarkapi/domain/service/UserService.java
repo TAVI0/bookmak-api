@@ -1,7 +1,7 @@
 package com.tavio.bookmarkapi.domain.service;
 
 import com.tavio.bookmarkapi.domain.repository.UserRepository;
-import com.tavio.bookmarkapi.persistance.entity.User;
+import com.tavio.bookmarkapi.persistance.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,18 +13,18 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public Optional<User> getByUsername(String username){
-        return userRepository.getByUsername(username);
+    public Optional<UserEntity> getByUsername(String username){
+        return userRepository.findByUsername(username);
     }
-    public Optional<User> getById(Integer id){
-        return userRepository.getById(id);
+    public Optional<UserEntity> getById(Integer id){
+        return userRepository.findById(id);
     }
-    public List<User> getAll(){
-        return userRepository.getAll();
+    public List<UserEntity> getAll(){
+        return (List<UserEntity>) userRepository.findAll();
     }
 
-    public User save(User user){
-        return userRepository.save(user);
+    public UserEntity save(UserEntity userEntity){
+        return userRepository.save(userEntity);
     }
 
 }

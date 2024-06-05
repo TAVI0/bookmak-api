@@ -12,9 +12,9 @@ public class UserFollow {
 
     @ManyToOne
     @JoinColumn(name = "idUser", insertable = false, updatable = false)
-    private User user;
+    private UserEntity user;
 
     @ManyToOne
     @JoinColumn(name = "idFollowedUser", insertable = false, updatable = false)
-    private User idFollowedUser;
+    private UserEntity idFollowedUser;
 }

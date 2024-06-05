@@ -29,7 +29,7 @@ public class Post {
 
     @ManyToOne
     @JoinColumn(name = "idUser", insertable = false, updatable = false)
-    private User user;
+    private UserEntity userEntity;
 
     @ManyToOne
     @JoinColumn(name = "idBook", insertable = false, updatable = false)

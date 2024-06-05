@@ -10,11 +10,15 @@ import java.util.Optional;
 
 @Service
 public class BookService {
+    private final BookRepository bookRepository;
+
     @Autowired
-    private BookRepository bookRepository;
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
     public List<Book> getAll(){
-        return bookRepository.getAll();
+        return (List<Book>) bookRepository.findAll();
     }
     public void save(Book book){
         bookRepository.save(book);
@@ -22,12 +26,12 @@ public class BookService {
 
     public boolean delete(int idBook){
         return getBook(idBook).map(book -> {
-            bookRepository.delete(idBook);
+            bookRepository.deleteById(idBook);
             return true;
         }).orElse(false);
 
     }
     public Optional<Book> getBook(int idBook){
-        return bookRepository.getBook(idBook);
+        return bookRepository.findById(idBook);
     }
 }

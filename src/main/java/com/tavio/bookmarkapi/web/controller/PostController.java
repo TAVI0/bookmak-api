@@ -4,7 +4,7 @@ import com.tavio.bookmarkapi.domain.service.BookService;
 import com.tavio.bookmarkapi.domain.service.PostService;
 import com.tavio.bookmarkapi.domain.service.UserService;
 import com.tavio.bookmarkapi.persistance.entity.Post;
-import com.tavio.bookmarkapi.persistance.entity.User;
+import com.tavio.bookmarkapi.persistance.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,14 +37,14 @@ public class PostController {
 
     @GetMapping("/username/{username}")
     public List<Post> getByUsername(@PathVariable("username") String username){
-        Optional<User> user = userService.getByUsername(username);
+        Optional<UserEntity> user = userService.getByUsername(username);
         return user.map(value -> postService.getByUser(value.getId())).orElse(null);
     }
 
     @PostMapping("/save")
     public void save(@RequestBody Post post){
         post.setBook(bookService.getBook(post.getIdBook()).get());
-        post.setUser(userService.getById(post.getIdUser()).get());
+        post.setUserEntity(userService.getById(post.getIdUser()).get());
         postService.save(post);
     }
     @DeleteMapping("/delete/{id}")

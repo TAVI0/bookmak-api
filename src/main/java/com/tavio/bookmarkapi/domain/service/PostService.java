@@ -15,16 +15,16 @@ public class PostService {
     private PostRepository postRepository;
 
     public List<Post> getAll(){
-        return postRepository.getAll();
+        return (List<Post>) postRepository.findAll();
     }
 
     public List<Post> getByUser(int idUser){
-        return  postRepository.getByUser(idUser);
+        return  postRepository.findByIdUserOrderByIdAsc(idUser);
     }
 
 
     public Optional<Post> getPost(BigInteger idPost){
-        return postRepository.getPost(idPost);
+        return postRepository.findById(idPost);
     }
 
     public void save(Post post){
@@ -32,7 +32,7 @@ public class PostService {
     }
     public boolean delete(BigInteger idPost){
         return getPost(idPost).map(post ->{
-            postRepository.delete(idPost);
+            postRepository.deleteById(idPost);
             return true;
         }).orElse(false);
     }
