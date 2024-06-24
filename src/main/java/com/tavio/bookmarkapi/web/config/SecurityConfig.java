@@ -36,7 +36,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/post/**").hasRole("READER")
                         .requestMatchers(HttpMethod.POST,   "/post/**").hasRole("READER")
                         .requestMatchers(HttpMethod.PUT,    "/post/**").hasRole("READER")
-                       // .requestMatchers(HttpMethod.GET,    "/post/**").permitAll()
+                        .requestMatchers(HttpMethod.GET,    "/post/**").permitAll()
 
                         .requestMatchers(HttpMethod.DELETE, "/user/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET,    "/user/**").permitAll()
