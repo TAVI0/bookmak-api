@@ -9,10 +9,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.header.Header;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,5 +40,12 @@ public class AuthController {
         loginDto.setPassword("");
 
         return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, jwt).body(loginDto);
+    }
+
+    @GetMapping("/getUserByJWT/{jwt}")
+    public String getUserByJWT(@PathVariable String jwt){
+        System.out.println(jwtUtil.getUsername(jwt));
+
+        return jwtUtil.getUsername(jwt);
     }
 }
