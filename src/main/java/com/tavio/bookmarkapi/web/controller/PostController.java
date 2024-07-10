@@ -35,6 +35,12 @@ public class PostController {
         return postService.getByUser(idUser);
     }
 
+    @GetMapping("/{username}/{bookName}/{num}")
+    public Optional<Post> getPostByUserBookNameNum(@PathVariable("usermame") String username, @PathVariable("bookName") String bookName, @PathVariable("num") int num){
+
+
+    }
+
     @GetMapping("/username/{username}")
     public List<Post> getByUsername(@PathVariable("username") String username){
         Optional<UserEntity> user = userService.getByUsername(username);
