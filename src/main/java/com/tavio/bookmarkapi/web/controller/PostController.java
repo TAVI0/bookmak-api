@@ -36,9 +36,9 @@ public class PostController {
     }
 
     @GetMapping("/{username}/{bookName}/{num}")
-    public Optional<Post> getPostByUserBookNameNum(@PathVariable("usermame") String username, @PathVariable("bookName") String bookName, @PathVariable("num") int num){
-
-
+    public Optional<Post> getPostByUserBookNameNum(@PathVariable("username") String username, @PathVariable("bookName") String bookName, @PathVariable("num") int num){
+        String bookNameStr = bookName.replace("-"," ");
+        return postService.getPostByUsernameAndBookNameAndNumPost(username,bookNameStr,1);
     }
 
     @GetMapping("/username/{username}")

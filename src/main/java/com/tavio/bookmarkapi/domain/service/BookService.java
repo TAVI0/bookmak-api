@@ -20,6 +20,9 @@ public class BookService {
     public List<Book> getAll(){
         return (List<Book>) bookRepository.findAll();
     }
+    public Optional<Book> getByName(String name){
+        return bookRepository.getByName(name);
+    }
     public void save(Book book){
         bookRepository.save(book);
     }
