@@ -1,4 +1,5 @@
 package com.tavio.bookmarkapi.web.config;
+import io.github.cdimascio.dotenv.Dotenv;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,11 +11,14 @@ import java.util.Arrays;
 
 @Configuration
 public class CorsConfig {
+
+    private final Dotenv dotenv = Dotenv.load();
     @Bean
     CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration corsConfiguration = new CorsConfiguration();
 
-        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+        String allowedOrigin = dotenv.get("ALLOWED_ORIGIN");
+        corsConfiguration.setAllowedOrigins(Arrays.asList(allowedOrigin ));
         corsConfiguration.setAllowedMethods(Arrays.asList("POST", "PUT", "GET", "OPTIONS", "DELETE"));
         corsConfiguration.setAllowedHeaders(Arrays.asList("*"));
        // corsConfiguration.addExposedHeader("Authorization");
