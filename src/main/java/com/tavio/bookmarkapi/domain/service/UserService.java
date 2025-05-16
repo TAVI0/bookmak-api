@@ -16,7 +16,7 @@ public class UserService {
     public Optional<UserEntity> getByUsername(String username){
         return userRepository.findByUsername(username);
     }
-    public Optional<UserEntity> getById(Integer id){
+    public Optional<UserEntity> getById(Long id){
         return userRepository.findById(id);
     }
     public List<UserEntity> getAll(){

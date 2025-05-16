@@ -27,14 +27,14 @@ public class BookService {
         bookRepository.save(book);
     }
 
-    public boolean delete(int idBook){
+    public boolean delete(Long idBook){
         return getBook(idBook).map(book -> {
             bookRepository.deleteById(idBook);
             return true;
         }).orElse(false);
 
     }
-    public Optional<Book> getBook(int idBook){
+    public Optional<Book> getBook(Long idBook){
         return bookRepository.findById(idBook);
     }
 }

@@ -24,11 +24,11 @@ public class BookController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable("id") int idBook){
+    public boolean delete(@PathVariable("id") Long idBook){
         return bookService.delete(idBook);
     }
     @GetMapping("/{id}")
-    public Optional<Book> getBook(@PathVariable("id") int idBook){
+    public Optional<Book> getBook(@PathVariable("id") Long idBook){
         return bookService.getBook(idBook);
     }
 }

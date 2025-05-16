@@ -17,10 +17,10 @@ public class Post {
     private Long id;
 
     @Column(name = "id_user")
-    private Integer idUser;
+    private Long idUser;
 
     @Column(name = "id_book")
-    private Integer idBook;
+    private Long idBook;
 
     @Column(name = "date_post")
     private LocalDate datePost;

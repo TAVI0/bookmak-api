@@ -27,11 +27,11 @@ public class PostController {
         return postService.getAll();
     }
     @GetMapping("/{id}")
-    public Optional<Post> getPost(@PathVariable("id") BigInteger idPost){
+    public Optional<Post> getPost(@PathVariable("id") Long idPost){
         return postService.getPost(idPost);
     }
     @GetMapping("/userid/{id}")
-    public List<Post> getByUserid(@PathVariable("id") int idUser){
+    public List<Post> getByUserid(@PathVariable("id") Long idUser){
         return postService.getByUser(idUser);
     }
 
@@ -54,7 +54,7 @@ public class PostController {
         postService.save(post);
     }
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable("id") BigInteger idPost){
+    public boolean delete(@PathVariable("id") Long idPost){
         return postService.delete(idPost);
     }
 

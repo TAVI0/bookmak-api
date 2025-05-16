@@ -23,12 +23,12 @@ public class PostService {
         return (List<Post>) postRepository.findAll();
     }
 
-    public List<Post> getByUser(int idUser){
+    public List<Post> getByUser(Long idUser){
         return  postRepository.findByIdUserOrderByIdAsc(idUser);
     }
 
 
-    public Optional<Post> getPost(BigInteger idPost){
+    public Optional<Post> getPost(Long idPost){
         return postRepository.findById(idPost);
     }
 
@@ -41,7 +41,7 @@ public class PostService {
         Book book = bookService.getByName(bookName).get();
         return postRepository.findByIdUserAndIdBook(user.getId(), book.getId());
     }
-    public boolean delete(BigInteger idPost){
+    public boolean delete(Long idPost){
         return getPost(idPost).map(post ->{
             postRepository.deleteById(idPost);
             return true;

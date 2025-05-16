@@ -22,7 +22,7 @@ public class UserController {
         return userService.getAll();
     }
     @GetMapping("/id/{id}")
-    public Optional<UserEntity> getById(@PathVariable("id") Integer idUser){
+    public Optional<UserEntity> getById(@PathVariable("id") Long idUser){
         return userService.getById(idUser);
     }
     @GetMapping("/username/{username}")

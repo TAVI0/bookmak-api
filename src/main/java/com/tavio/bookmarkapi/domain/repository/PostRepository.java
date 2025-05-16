@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PostRepository extends CrudRepository<Post, Long> {
-    List<Post> findByIdUserOrderByIdAsc(int idUser);
+    List<Post> findByIdUserOrderByIdAsc(Long idUser);
 
-    Optional<Post> findByIdUserAndIdBook(int idUser, int idBook);
+    Optional<Post> findByIdUserAndIdBook(Long idUser, Long idBook);
 
 }
