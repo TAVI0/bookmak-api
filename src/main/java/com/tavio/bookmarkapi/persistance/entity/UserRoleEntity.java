@@ -19,7 +19,7 @@ public class UserRoleEntity {
     @Column(nullable = false, length = 20)
     private String role;
 
-    @Column(name = "granted_date", nullable = false, columnDefinition = "DATETIME")
+    @Column(name = "granted_date", nullable = false)
     private LocalDateTime grantedDate;
 
     @ManyToOne
