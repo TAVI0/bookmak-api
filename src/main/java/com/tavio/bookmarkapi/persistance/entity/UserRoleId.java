@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Data
 public class UserRoleId implements Serializable {
-    private Integer idUser;
+    private Long idUser;
     private String role;
 
     @Override

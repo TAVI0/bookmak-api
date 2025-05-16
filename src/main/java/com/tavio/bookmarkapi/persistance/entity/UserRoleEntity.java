@@ -13,7 +13,7 @@ public class UserRoleEntity {
 
     @Id
     @Column(name = "id_user", nullable = false)
-    private Integer idUser;
+    private Long idUser;
 
     @Id
     @Column(nullable = false, length = 20)

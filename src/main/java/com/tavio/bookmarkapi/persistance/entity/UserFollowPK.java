@@ -9,6 +9,6 @@ import java.io.Serializable;
 @Data
 @Embeddable
 public class UserFollowPK implements Serializable {
-    private Integer idUser;
-    private Integer idFollowedUser;
+    private Long idUser;
+    private Long idFollowedUser;
 }

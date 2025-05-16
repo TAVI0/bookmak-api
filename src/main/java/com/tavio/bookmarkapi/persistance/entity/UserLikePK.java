@@ -8,6 +8,6 @@ import java.io.Serializable;
 @Data
 @Embeddable
 public class UserLikePK implements Serializable {
-    private Integer idUser;
-    private Integer idPost;
+    private Long idUser;
+    private Long idPost;
 }
