@@ -8,24 +8,26 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 public class CorsConfig {
 
-    private final Dotenv dotenv = Dotenv.load();
+    private final Dotenv dotenv = Dotenv.configure()
+            .ignoreIfMissing()
+            .load();
+
     @Bean
-    CorsConfigurationSource corsConfigurationSource(){
-        CorsConfiguration corsConfiguration = new CorsConfiguration();
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration cors = new CorsConfiguration();
+        cors.setAllowedOrigins(
+                List.of(dotenv.get("ALLOWED_ORIGIN", "*")) 
+        );
+        cors.setAllowedMethods(List.of("POST","PUT","GET","OPTIONS","DELETE"));
+        cors.addAllowedHeader("*");
 
-        String allowedOrigin = dotenv.get("ALLOWED_ORIGIN");
-        corsConfiguration.setAllowedOrigins(Arrays.asList(allowedOrigin ));
-        corsConfiguration.setAllowedMethods(Arrays.asList("POST", "PUT", "GET", "OPTIONS", "DELETE"));
-        corsConfiguration.setAllowedHeaders(Arrays.asList("*"));
-       // corsConfiguration.addExposedHeader("Authorization");
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", corsConfiguration);
-
-        return source;
+        UrlBasedCorsConfigurationSource src = new UrlBasedCorsConfigurationSource();
+        src.registerCorsConfiguration("/**", cors);
+        return src;
     }
 }
