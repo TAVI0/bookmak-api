@@ -7,7 +7,7 @@ import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 
-public interface PostRepository extends CrudRepository<Post, BigInteger> {
+public interface PostRepository extends CrudRepository<Post, Long> {
     List<Post> findByIdUserOrderByIdAsc(int idUser);
 
     Optional<Post> findByIdUserAndIdBook(int idUser, int idBook);
