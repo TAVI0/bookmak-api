@@ -1,7 +1,13 @@
+# ---------- build stage ----------
+FROM gradle:8.6-jdk17 AS builder
+WORKDIR /home/app
+COPY . .
+RUN gradle bootJar --no-daemon
+
+# ---------- runtime stage ----------
 FROM eclipse-temurin:17
-
-LABEL author = tavio.com
-
-COPY build/libs/bookmark-api-0.0.1-SNAPSHOT.jar app.jar
-
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+WORKDIR /app
+COPY --from=builder /home/app/build/libs/*SNAPSHOT.jar app.jar
+ENV PORT=8080
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/app/app.jar"]

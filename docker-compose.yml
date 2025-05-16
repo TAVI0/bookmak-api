@@ -1,13 +1,26 @@
-# ---------- build stage ----------
-FROM gradle:8.6-jdk17 AS builder
-WORKDIR /home/app
-COPY . .
-RUN gradle bootJar --no-daemon
-  
-  # ---------- runtime stage ----------
-FROM eclipse-temurin:17
-WORKDIR /app
-COPY --from=builder /home/app/build/libs/*SNAPSHOT.jar app.jar
-ENV PORT=8080
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","/app/app.jar"]
+version: "3.8"
+services:
+  app:
+    container_name: "bookmarkAPI"
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresdb:5432/bookmark
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=admin
+    depends_on:
+      - postgres_db
+
+  postgres_db:
+    container_name: "postgresdb"
+    image: "postgres"
+    ports:
+      - "5431:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "admin"
+      POSTGRES_DB: "bookmark"
+
+volumes:
+  postgres-data:
