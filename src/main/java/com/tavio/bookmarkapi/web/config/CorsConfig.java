@@ -20,10 +20,10 @@ public class CorsConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration cors = new CorsConfiguration();
-        cors.setAllowedOrigins(
-                List.of(dotenv.get("ALLOWED_ORIGIN", "*")) 
-        );
+        cors.setAllowedOrigins(List.of(dotenv.get("ALLOWED_ORIGIN", "*")));
         cors.setAllowedMethods(List.of("POST","PUT","GET","OPTIONS","DELETE"));
+        cors.setAllowedHeaders(List.of("*"));
+        cors.setAllowCredentials(true);
         cors.addAllowedHeader("*");
 
         UrlBasedCorsConfigurationSource src = new UrlBasedCorsConfigurationSource();
