@@ -18,7 +18,7 @@ public class CorsConfig {
             .load();
 
     @Bean
-    CorsConfigurationSource corsConfigurationSource() {
+    public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration cors = new CorsConfiguration();
         cors.setAllowedOrigins(
                 List.of(dotenv.get("ALLOWED_ORIGIN", "*")) 
