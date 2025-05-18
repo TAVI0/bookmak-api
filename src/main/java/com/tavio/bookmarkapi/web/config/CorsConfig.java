@@ -1,6 +1,7 @@
 package com.tavio.bookmarkapi.web.config;
 import io.github.cdimascio.dotenv.Dotenv;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +16,10 @@ public class CorsConfig {
 
     @Value("${ALLOWED_ORIGIN}")
     private String allowedOrigin;
-
+    @PostConstruct
+    public void logOrigin() {
+        System.out.println("→ ALLOWED_ORIGIN = " + allowedOrigin);
+    }
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration cors = new CorsConfiguration();
