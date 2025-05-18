@@ -1,6 +1,7 @@
 package com.tavio.bookmarkapi.persistance.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -8,6 +9,7 @@ import lombok.Getter;
 
 import java.util.List;
 
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 
 @Entity
 @Table(name= "users")
@@ -23,13 +25,7 @@ public class UserEntity {
     private String description;
     private String twitter;
 
-   /*
-    @OneToMany(mappedBy = "user")
-    private List<Post> posts;
 
-    @OneToMany(mappedBy = "user")
-    private List<UserLike> likes;
-*/
     @OneToMany(mappedBy = "user")
     private List<UserFollow> follows;
 
